@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NC IDS Landing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="logo">
+      <img src="logo.png" alt="NC IDS 로고">
+    </div>
+    <nav class="top-links">
+      <div class="top-link-group">
+        <div class="top-link-item">
+          <a href="#about">회사소개</a>
+        </div>
+        <div class="top-link-item">
+          <a href="#services">기술과 서비스</a>
+        </div>
+        <div class="submenu-panel">
+          <div class="submenu-section">
+            <a href="#about">NC IDS 소개</a>
+            <a href="#about">사업장</a>
+          </div>
+          <div class="submenu-section">
+            <a href="#services">AX 솔루션</a>
+            <a href="#services">엔터프라이즈 솔루션</a>
+            <a href="#services">게임 비즈니스 솔루션</a>
+            <a href="#services">IT 인프라 서비스</a>
+            <a href="#services">비즈니스 지원 솔루션</a>
+          </div>
+        </div>
+      </div>
+      <a href="#news">소식</a>
+      <a href="#careers">채용</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero__video-track">
+      <video class="hero__video" autoplay muted loop playsinline>
+        <source src="https://vod.plaync.com/IDS/ncids_1.mp4" type="video/mp4" />
+      </video>
+      <video class="hero__video" autoplay muted loop playsinline>
+        <source src="https://vod.plaync.com/IDS/ncids_2.mp4" type="video/mp4" />
+      </video>
+      <video class="hero__video" autoplay muted loop playsinline>
+        <source src="https://vod.plaync.com/IDS/ncids_3.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero__bg"></div>
+    <div class="container hero__content">
+      <h1 class="hero__title"></h1>
+      <a class="btn btn--ghost" href="#about">
+        자세히 보기
+        <img src="arrow.png" alt="">
+      </a>
+    </div>
+    <div class="hero__dots" aria-label="슬라이드 선택">
+      <button class="dot is-active" data-slide="0" aria-label="슬라이드 1"></button>
+      <button class="dot" data-slide="1" aria-label="슬라이드 2"></button>
+      <button class="dot" data-slide="2" aria-label="슬라이드 3"></button>
+    </div>
+  </section>
+
+  <main>
+    <section id="about" class="section section--after-hero">
+      <div class="container about">
+        <div>
+          <h2 class="section__title">NC IDS 소개</h2>
+          <p class="body">
+            NC IDS는 2024년 10월, NC의 IT 부문으로 설립된 AI Transformation(AX) 중심의 IT 서비스 기업입니다.<br>
+            기업의 지속적인 성장과 경쟁력 확보를 위해 AI, 클라우드, 그리고 통합 IT 플랫폼을 기반으로 하는 End-to-End 디지털 혁신 솔루션을 제공합니다. 전사적 운영<br>효율성을 극대화하는 백오피스 시스템부터, 고객 경험을 재정의하는 AI 기반 서비스, 그리고 혁신 속도를 높이는 차세대 인프라까지 모든 영역에서 미래 지향적인<br>가치를 창출합니다.
+          </p>
+          <a class="link-inline" href="#about">
+            <img src="link-icon.png" alt="">
+            회사 소개 바로가기
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section section--light">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">주요 기술과 서비스</h2>
+        </div>
+        <div class="pill-row-wrapper">
+          <div class="pill-row">
+            <button class="pill is-active">AX 솔루션</button>
+            <button class="pill">엔터프라이즈 솔루션</button>
+            <button class="pill">게임 비즈니스 솔루션</button>
+            <button class="pill">IT 인프라 서비스</button>
+          </div>
+          <div class="slider-arrows" aria-hidden="true">
+            <button class="arrow arrow--prev" aria-label="이전 카드">
+              <img src="arrow__left.png" alt="이전" class="arrow__img">
+            </button>
+            <button class="arrow arrow--next" aria-label="다음 카드">
+              <img src="arrow__right.png" alt="다음" class="arrow__img">
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="services-slider-wrapper">
+        <div class="services-slider">
+          <div class="services-grid">
+            <article class="service-item">
+              <img src="img01.png" alt="AI 기반 디지털 혁신 서비스" class="service-item__media">
+              <div class="service-item__content">
+                <p class="eyebrow">AX 솔루션</p>
+                <h3>AI 기반 디지털 혁신 서비스</h3>
+                <p class="body">축적된 정밀 데이터와 역량을 기반으로 다양한 산업 환경에 적용 가능한 AI 응용 서비스를 설계하고 구현합니다.</p>
+              </div>
+            </article>
+            <article class="service-item">
+              <img src="img02.png" alt="AI 기반 옴니채널 고객경험(CX) 플랫폼" class="service-item__media">
+              <div class="service-item__content">
+                <p class="eyebrow">AX 솔루션</p>
+                <h3>AI 기반 옴니채널 고객경험(CX) 플랫폼</h3>
+                <p class="body">타깃군/상담 예상 문의, 절차 분류, 서비스 추천까지 AI 기반 데이터로 CX 프로세스를 제공합니다.</p>
+              </div>
+            </article>
+            <article class="service-item">
+              <img src="img03.png" alt="AI 기반 데이터 분석 플랫폼" class="service-item__media">
+              <div class="service-item__content">
+                <p class="eyebrow">엔터프라이즈 솔루션</p>
+                <h3>AI 기반 데이터 분석 플랫폼</h3>
+                <p class="body">대규모 데이터를 실시간으로 분석하고 인사이트를 도출하여 비즈니스 의사결정을 지원합니다.</p>
+              </div>
+            </article>
+            <article class="service-item">
+              <img src="img04.png" alt="통합 ERP 시스템" class="service-item__media">
+              <div class="service-item__content">
+                <p class="eyebrow">엔터프라이즈 솔루션</p>
+                <h3>통합 ERP 시스템</h3>
+                <p class="body">재무, 인사, 물류 등 전사 업무 프로세스를 통합 관리하는 차세대 엔터프라이즈 리소스 플래닝 솔루션입니다.</p>
+              </div>
+            </article>
+            <article class="service-item">
+              <img src="img05.png" alt="비즈니스 인텔리전스 플랫폼" class="service-item__media">
+              <div class="service-item__content">
+                <p class="eyebrow">엔터프라이즈 솔루션</p>
+                <h3>비즈니스 인텔리전스 플랫폼</h3>
+                <p class="body">다양한 데이터 소스를 통합하여 실시간 대시보드와 리포트를 제공하는 경영 분석 솔루션입니다.</p>
+              </div>
+            </article>
+            <article class="service-item">
+              <img src="img06.png" alt="근태 관리 시스템" class="service-item__media">
+              <div class="service-item__content">
+                <p class="eyebrow">게임 비즈니스 솔루션</p>
+                <h3>근태 관리 시스템</h3>
+                <p class="body">SaaS 기반의 편리하고 스마트한 근태 관리 솔루션으로 출퇴근, 휴가, 연차를 효율적으로 관리합니다.</p>
+              </div>
+            </article>
+            <article class="service-item">
+              <img src="img07.png" alt="협업 및 커뮤니케이션 플랫폼" class="service-item__media">
+              <div class="service-item__content">
+                <p class="eyebrow">IT 인프라 서비스</p>
+                <h3>협업 및 커뮤니케이션 플랫폼</h3>
+                <p class="body">팀 간 실시간 협업과 커뮤니케이션을 지원하는 통합 워크스페이스 솔루션입니다.</p>
+              </div>
+            </article>
+            <article class="service-item">
+              <img src="img08.png" alt="클라우드 인프라 관리" class="service-item__media">
+              <div class="service-item__content">
+                <p class="eyebrow">IT 인프라 서비스</p>
+                <h3>클라우드 인프라 관리</h3>
+                <p class="body">하이브리드 및 멀티 클라우드 환경을 통합 관리하고 최적화하는 인프라 운영 솔루션입니다.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section news-section">
+      <div class="container">
+        <h2 class="section__title">소식</h2>
+        <div class="news-grid">
+          <article class="card news">
+            <img src="news01.png" alt="AI 솔루션 프로젝트 개발, 인프라 구축 회사 명시 아이디어스 정보" class="card__media">
+            <div class="card__body">
+              <p class="body">AI 솔루션 프로젝트 개발, 인프라 구축 회사 명시 아이디어스 정보</p>
+            </div>
+          </article>
+          <article class="card news">
+            <img src="news02.png" alt="SaaS 기반의 편리하고 스마트한 근태 솔루션을 만나보세요." class="card__media">
+            <div class="card__body">
+              <p class="body">SaaS 기반의 편리하고 스마트한 근태 솔루션을 만나보세요.</p>
+            </div>
+          </article>
+          <article class="card news">
+            <img src="news03.png" alt="AI 챗봇 개발 팀 이야기" class="card__media">
+            <div class="card__body">
+              <p class="body">AI 챗봇 개발 팀 이야기</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section__title">CONTACT US</h2>
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <img src="icon_map.png" alt="위치 아이콘" class="contact-card__icon">
+            <p class="label">Korea Office</p>
+            <p class="body">경기도 성남시 분당구 판교역로 145 (백현동, 알파리움2단지) 11층<br>TEL 02-2186-3200 / EMAIL ncids@ncsoft.com</p>
+          </div>
+          <div class="card contact-card">
+            <img src="icon_partnership.png" alt="파트너십 아이콘" class="contact-card__icon">
+            <div class="contact-card__header">
+              <p class="label">Project Inquiry</p>
+              <span class="pill pill--ghost">
+                문의하기
+                <img src="icon_arrow_right.png" alt="화살표" class="pill__icon">
+              </span>
+            </div>
+            <p class="body">다양한 비즈니스 분야를 새롭게 개척하고 있습니다.<br>사업의 가능성을 확장하세요!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="careers" class="section careers">
+      <div class="container careers__content">
+        <div>
+          <p class="eyebrow">CAREERS</p>
+          <h2 class="section__title">함께 미래를 만들어갈 인재를 찾습니다.</h2>
+          <a class="link-inline" href="#careers">
+            <img src="icon_btn.png" alt="화살표" class="link-inline__icon">
+            채용 바로가기
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-top">
+          <div class="logo">
+            <img src="logo.png" alt="NC IDS 로고">
+          </div>
+          <button class="footer__privacy">개인정보 처리방침</button>
+        </div>
+  
+        <p class="footnote">© NC IDS CO., LTD. All Rights Reserved.</p>
+      </div>
+  
+      <div class="footer-right">
+        FAMILY SITE <img src="icon_add.png" alt="추가" class="footer__add-icon">
+      </div>
+    </div>
+  </footer>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
+
