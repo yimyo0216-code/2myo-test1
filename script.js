@@ -104,11 +104,136 @@ toggleHeaderOnScroll();
 // 초기 슬라이드 적용
 setSlide(0);
 
+// 서브메뉴를 메인 메뉴 항목에 맞춰 정렬
+const topLinkGroup = document.querySelector(".top-link-group");
+const submenuPanel = document.querySelector(".submenu-panel");
+
+const alignSubmenuToMenu = () => {
+  if (!topLinkGroup || !submenuPanel) return;
+  
+  const headerRect = header.getBoundingClientRect();
+  const menuItems = topLinkGroup.querySelectorAll(".top-link-item");
+  const submenuSections = submenuPanel.querySelectorAll(".submenu-section");
+  
+  // 각 메뉴 항목과 서브메뉴 섹션을 매칭하여 정렬
+  menuItems.forEach((menuItem, index) => {
+    if (index < submenuSections.length) {
+      const menuItemRect = menuItem.getBoundingClientRect();
+      const relativeLeft = menuItemRect.left - headerRect.left;
+      
+      // 서브메뉴 섹션을 해당 메뉴 항목에 맞춰 정렬
+      // 패널이 top: 0px부터 시작하고, 헤더(85px) + 여백(58px) - 50px = 93px 위치에 배치
+      submenuSections[index].style.position = "absolute";
+      submenuSections[index].style.left = `${relativeLeft}px`;
+      submenuSections[index].style.top = "93px";
+    }
+  });
+  
+  // 패널의 패딩을 제거 (섹션들이 absolute로 배치되므로)
+  submenuPanel.style.paddingLeft = "0";
+};
+
+// 마우스 오버 시 정렬
+if (topLinkGroup && submenuPanel) {
+  topLinkGroup.addEventListener("mouseenter", () => {
+    // 패널이 이미 열려있으면 아무것도 하지 않음
+    if (!submenuPanel.classList.contains("open")) {
+      alignSubmenuToMenu();
+      submenuPanel.classList.add("open");
+    }
+    document.body.classList.add("submenu-open");
+  });
+  topLinkGroup.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+      if (!submenuPanel.matches(':hover') && 
+          !newsLink?.matches(':hover') &&
+          !careersLink?.matches(':hover')) {
+        submenuPanel.classList.remove("open");
+        document.body.classList.remove("submenu-open");
+      }
+    }, 100);
+  });
+  submenuPanel.addEventListener("mouseenter", alignSubmenuToMenu);
+  
+  // 윈도우 리사이즈 시에도 정렬
+  window.addEventListener("resize", alignSubmenuToMenu);
+  
+  // 초기 정렬
+  alignSubmenuToMenu();
+}
+
+// "소식"과 "채용" 메뉴에도 회사소개/기술과 서비스와 동일한 패널이 열리도록
+const newsLink = document.querySelector('.top-links a[href="#news"]');
+const careersLink = document.querySelector('.top-links a[href="#careers"]');
+
+if (submenuPanel && (newsLink || careersLink)) {
+  // 모든 메뉴 항목에서 같은 패널을 열기 위한 함수
+  const openSamePanel = () => {
+    // 패널이 이미 열려있으면 아무것도 하지 않음
+    if (submenuPanel.classList.contains("open")) {
+      return;
+    }
+    // 기존 정렬 함수를 호출하여 회사소개/기술과 서비스 서브메뉴가 정렬되도록 함
+    alignSubmenuToMenu();
+    // 같은 패널을 열기 위해 open 클래스 추가
+    submenuPanel.classList.add("open");
+    // 패널이 열릴 때 소식/채용 메뉴 색상 변경을 위해 body에 클래스 추가
+    document.body.classList.add("submenu-open");
+  };
+  
+  const closePanel = () => {
+    // 패널이나 4개 메뉴 항목 중 하나에 마우스가 있으면 닫지 않음
+    setTimeout(() => {
+      if (!submenuPanel.matches(':hover') && 
+          !topLinkGroup?.matches(':hover') &&
+          !newsLink?.matches(':hover') &&
+          !careersLink?.matches(':hover')) {
+        submenuPanel.classList.remove("open");
+        document.body.classList.remove("submenu-open");
+      }
+    }, 100);
+  };
+
+  // 소식 메뉴에 이벤트 추가
+  if (newsLink) {
+    newsLink.addEventListener("mouseenter", openSamePanel);
+    newsLink.addEventListener("mouseleave", closePanel);
+  }
+
+  // 채용 메뉴에 이벤트 추가
+  if (careersLink) {
+    careersLink.addEventListener("mouseenter", openSamePanel);
+    careersLink.addEventListener("mouseleave", closePanel);
+  }
+  
+  // 패널에서 마우스가 벗어날 때 (4개 메뉴 모두 확인)
+  submenuPanel.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+      if (!topLinkGroup?.matches(':hover') &&
+          !newsLink?.matches(':hover') &&
+          !careersLink?.matches(':hover')) {
+        submenuPanel.classList.remove("open");
+        document.body.classList.remove("submenu-open");
+      }
+    }, 100);
+  });
+}
+
 // 서비스 슬라이더
 const servicesGrid = document.querySelector(".services-grid");
 const servicesSlider = document.querySelector(".services-slider");
 const prevArrow = document.querySelector(".arrow--prev");
 const nextArrow = document.querySelector(".arrow--next");
+
+// 이미지 드래그 방지
+const serviceImages = document.querySelectorAll(".service-item__media");
+serviceImages.forEach((img) => {
+  img.setAttribute("draggable", "false");
+  img.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+    return false;
+  });
+});
 
 if (servicesGrid && servicesSlider) {
   let currentScroll = 0;
