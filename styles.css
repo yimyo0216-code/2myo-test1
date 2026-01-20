@@ -75,7 +75,12 @@ a {
   align-items: center;
   height: 32px;
   margin-right: 0;
-  z-index: 102;
+  z-index: 103;
+  pointer-events: auto;
+}
+
+.logo a {
+  pointer-events: auto;
 }
 
 .logo img {
@@ -83,8 +88,15 @@ a {
   display: block;
 }
 
+.logo-img {
+  width: 90px;
+  height: 30px;
+  object-fit: contain;
+}
+
 .top-links {
   display: flex;
+  align-items: center;
   gap: 100px;
   font-size: 19px;
   font-weight: 700;
@@ -102,31 +114,39 @@ a {
   color: inherit;
   position: relative;
   z-index: 102;
+  display: flex;
+  align-items: center;
 }
 
 /* 채용 메뉴 아이콘 스타일 */
-.top-links a[href="#careers"] .careers-icon {
+.top-links a[href="#careers"] .careers-icon,
+.top-links a[href="index.html#careers"] .careers-icon {
   display: inline-block;
   margin-left: 2px;
-  vertical-align: middle;
   width: 16px;
   height: 16px;
-  transform: translateY(-2px);
+  flex-shrink: 0;
   transition: filter 0.2s ease;
 }
 
 /* 패널이 열렸을 때 채용 메뉴 아이콘 색상 변경 */
 body.submenu-open .top-links a[href="#careers"] .careers-icon,
-.top-links a[href="#careers"]:hover .careers-icon {
+body.submenu-open .top-links a[href="index.html#careers"] .careers-icon,
+.top-links a[href="#careers"]:hover .careers-icon,
+.top-links a[href="index.html#careers"]:hover .careers-icon {
   filter: brightness(0) saturate(100%);
 }
 
 /* 모든 메뉴에 패널이 열릴 때 색상 변경 */
 .top-links a[href="#news"]:hover,
+.top-links a[href="index.html#news"]:hover,
 .top-links a[href="#careers"]:hover,
+.top-links a[href="index.html#careers"]:hover,
 .top-link-item a:hover,
 body.submenu-open .top-links a[href="#news"],
+body.submenu-open .top-links a[href="index.html#news"],
 body.submenu-open .top-links a[href="#careers"],
+body.submenu-open .top-links a[href="index.html#careers"],
 body.submenu-open .top-link-item a {
   color: #1F1F1F !important;
 }
@@ -144,7 +164,9 @@ body.submenu-open .top-link-item a {
 
 /* 소식/채용 메뉴의 밑줄 위치를 회사소개/기술과 서비스와 맞춤 */
 .top-links a[href="#news"]:hover::after,
-.top-links a[href="#careers"]:hover::after {
+.top-links a[href="index.html#news"]:hover::after,
+.top-links a[href="#careers"]:hover::after,
+.top-links a[href="index.html#careers"]:hover::after {
   bottom: -2px;
 }
 
@@ -1088,6 +1110,229 @@ body.submenu-open .top-link-item a {
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
   cursor: pointer;
+}
+
+/* 서브페이지 헤더 스타일 - 기본 흰색 배경 */
+.top--subpage {
+  background: #FFFFFF !important;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+.top--subpage .top-links {
+  color: #1f1f1f;
+}
+
+.top--subpage .top-links a {
+  color: #1f1f1f;
+}
+
+.top--subpage.scrolled {
+  background: #FFFFFF !important;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+.top--subpage.scrolled .top-links {
+  color: #1f1f1f;
+}
+
+/* 서브페이지에서 패널이 열렸을 때도 흰색 배경 유지 */
+.top--subpage:has(.submenu-panel.open),
+.top--subpage:has(.top-link-group:hover) {
+  background: #FFFFFF !important;
+}
+
+/* 서브페이지에서 로고가 항상 보이도록 */
+.top--subpage .logo {
+  z-index: 103;
+  pointer-events: auto;
+}
+
+.top--subpage .logo img,
+.top--subpage .logo a {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.about-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  padding: 140px 0;
+  background: linear-gradient(135deg, #0a0f1e 0%, #0c1022 50%, #0b0f1e 100%);
+  overflow: hidden;
+}
+
+.about-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(40, 100, 255, 0.15), transparent 70%),
+              radial-gradient(circle at 80% 20%, rgba(95, 64, 255, 0.12), transparent 60%);
+  filter: blur(40px);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.about-hero__title {
+  position: relative;
+  z-index: 1;
+  font-size: 64px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+}
+
+.about-section {
+  padding: 120px 0;
+}
+
+.about-section--first {
+  background: #ffffff;
+  padding-bottom: 0;
+}
+
+.about-section--second {
+  background: #ffffff;
+  padding-top: 70px;
+}
+
+.about-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.about-section__header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-section__title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1F1F1F;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.about-section__subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: #5a5a5a;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-content-block {
+  background: #F5F7FC;
+  border-radius: 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+
+.about-content-block__inner {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
+}
+
+.about-content-block__image {
+  width: 630px;
+  height: 384px;
+  object-fit: cover;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.about-content-block__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  padding: 48px;
+}
+
+.about-content-block__heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1F1F1F;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.about-content-block__body {
+  font-size: 16px;
+  font-weight: 400;
+  color: #5a5a5a;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.about-section__image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* 섹션 2의 콘텐츠 블록은 이미지와 텍스트를 좌우 배치 */
+.about-content-block--with-image {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
+}
+
+.about-content-block--with-image .about-content-block__text {
+  flex: 1;
+}
+
+.about-content-block__image-right {
+  width: 630px;
+  height: 384px;
+  object-fit: cover;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.about-section--second .about-content-block__inner {
+  display: none;
+}
+
+.scroll-top {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.scroll-top:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px);
+}
+
+.scroll-top svg {
+  width: 20px;
+  height: 20px;
 }
 
 @media (max-width: 720px) {
