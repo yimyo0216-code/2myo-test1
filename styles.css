@@ -1791,6 +1791,35 @@ body.submenu-open .top-link-item a {
     padding: 0 24px;
   }
 
+  .hero__title {
+    margin-bottom: 10px;
+  }
+
+  .hero__dots {
+    bottom: 24px;
+  }
+
+  .about .section__title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .about .body {
+    font-size: 15px;
+    line-height: 25px;
+    margin-bottom: 30px;
+  }
+
+  .about .link-inline {
+    font-size: 13.5px;
+    gap: 10px;
+  }
+
+  .about .link-inline img {
+    width: 20px;
+    height: 20px;
+  }
+
   .logo {
     left: 24px;
   }
@@ -1853,6 +1882,18 @@ body.submenu-open .top-link-item a {
   .location__button {
     width: 100%;
     max-width: 300px;
+  }
+
+  .pill-row {
+    gap: 6px;
+  }
+
+  .pill {
+    height: 32px;
+    padding: 0 16px;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
   }
 }
 

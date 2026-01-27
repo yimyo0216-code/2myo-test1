@@ -12,23 +12,31 @@ const heroSlides = [
       "radial-gradient(650px circle at 80% 30%, rgba(40,100,255,0.2), transparent 60%), radial-gradient(900px circle at 20% 20%, rgba(95,64,255,0.25), transparent 70%), #0b0f1e",
     titleHtml:
       'AI·클라우드 기반으로 설계부터 운영까지,<br>비즈니스 전 과정을 스마트하게<br>혁신하는 <span class="accent">AX 솔루션</span>',
+    titleHtmlMobile:
+      'AI·클라우드 기반으로<br>설계부터 운영까지, 비즈니스<br>전 과정을 스마트하게<br>혁신하는 <span class="accent">AX 솔루션</span>',
   },
   {
     background:
       "radial-gradient(650px circle at 20% 25%, rgba(30,190,255,0.18), transparent 60%), radial-gradient(820px circle at 80% 25%, rgba(88,76,255,0.26), transparent 72%), #0a1024",
     titleHtml:
       '데이터와 자동화로 경영 효율을 높이고,<br>지속 가능한 성장을 실현하는<br>통합 <span class="accent">엔터프라이즈 솔루션</span>',
+    titleHtmlMobile:
+      '데이터와 자동화로<br>경영 효율을 높이고<br>지속 가능한 성장을 실현하는<br>통합 <span class="accent">엔터프라이즈 솔루션</span>',
   },
   {
     background:
       "radial-gradient(700px circle at 60% 35%, rgba(62,108,223,0.28), transparent 60%), radial-gradient(600px circle at 30% 35%, rgba(28,132,255,0.22), transparent 65%), #0c1022",
     titleHtml:
       'AX와 AI 기술로 게임의 전 생애주기를<br>혁신하는 <span class="accent">게임 비즈니스 솔루션</span>',
+    titleHtmlMobile:
+      'AX와 AI 기술로 게임의<br>전 생애주기를 혁신하는<br><span class="accent">게임 비즈니스 솔루션</span>',
   },
 ];
 
 let currentSlide = 0;
 let autoTimer = null;
+
+const isMobileHero = () => typeof window !== "undefined" && window.innerWidth <= 959;
 
 const setSlide = (nextIndex) => {
   if (!hero) return;
@@ -38,7 +46,8 @@ const setSlide = (nextIndex) => {
   const slide = heroSlides[currentSlide];
   hero.style.background = slide.background;
   if (heroTitle) {
-    heroTitle.innerHTML = slide.titleHtml;
+    const html = isMobileHero() && slide.titleHtmlMobile ? slide.titleHtmlMobile : slide.titleHtml;
+    heroTitle.innerHTML = html;
   }
 
   if (heroTrack) {
@@ -103,6 +112,11 @@ toggleHeaderOnScroll();
 
 // 초기 슬라이드 적용
 setSlide(0);
+
+// 959px 전환 시 타이틀 재적용
+window.addEventListener("resize", () => {
+  setSlide(currentSlide);
+});
 
 // 서브메뉴를 메인 메뉴 항목에 맞춰 정렬
 const topLinkGroup = document.querySelector(".top-link-group");
