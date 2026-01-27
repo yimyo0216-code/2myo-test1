@@ -436,3 +436,33 @@ if (servicesGrid && servicesSlider) {
   servicesSlider.addEventListener("touchend", onTouchEnd);
 }
 
+// 모바일 햄버거 메뉴 토글
+const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+const mobileMenuOverlay = document.querySelector(".mobile-menu-overlay");
+const mobileMenuClose = document.querySelector(".mobile-menu-close");
+
+if (mobileMenuToggle && mobileMenuOverlay) {
+  mobileMenuToggle.addEventListener("click", () => {
+    mobileMenuOverlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+}
+
+if (mobileMenuClose && mobileMenuOverlay) {
+  mobileMenuClose.addEventListener("click", () => {
+    mobileMenuOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+}
+
+// 모바일 메뉴 링크 클릭 시 메뉴 닫기
+const mobileMenuLinks = document.querySelectorAll(".mobile-menu-link");
+mobileMenuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+});
+

@@ -9,33 +9,71 @@
 <body>
   <header class="top">
     <div class="logo">
-      <img src="logo.png" alt="NC IDS 로고">
+      <img src="images/main/logo.png" alt="NC IDS 로고" class="logo-img logo-light">
+      <img src="images/main/NCIDS_CI_black.png" alt="NC IDS 로고" class="logo-img logo-dark">
     </div>
+    <button class="mobile-menu-toggle" aria-label="메뉴 열기">
+      <img src="images/main/hamburger-icon-wh.png" alt="메뉴" class="hamburger-icon hamburger-icon-white">
+      <img src="images/main/hamburger-icon-bk.png" alt="메뉴" class="hamburger-icon hamburger-icon-black" style="display: none;">
+    </button>
     <nav class="top-links">
       <div class="top-link-group">
         <div class="top-link-item">
           <a href="about.html">회사소개</a>
         </div>
         <div class="top-link-item">
-          <a href="#services">기술과 서비스</a>
+          <a href="ax.html">기술과 서비스</a>
         </div>
         <div class="submenu-panel">
           <div class="submenu-section">
             <a href="about.html">NC IDS 소개</a>
-            <a href="about.html#office">사업장</a>
+            <a href="location.html">사업장</a>
           </div>
           <div class="submenu-section">
-            <a href="#services">AX 솔루션</a>
-            <a href="#services">엔터프라이즈 솔루션</a>
-            <a href="#services">게임 비즈니스 솔루션</a>
-            <a href="#services">IT 인프라 서비스</a>
-            <a href="#services">비즈니스 지원 솔루션</a>
+            <a href="ax.html">AX 솔루션</a>
+            <a href="enterprise.html">엔터프라이즈 솔루션</a>
+            <a href="game.html">게임 비즈니스 솔루션</a>
+            <a href="infra.html">IT 인프라 서비스</a>
+            <a href="bizsupport.html">비즈니스 지원 솔루션</a>
           </div>
         </div>
       </div>
-      <a href="#news">소식</a>
-      <a href="#careers">채용 <img src="arrow--up-right.png" alt="" class="careers-icon"></a>
+      <a href="news.html">소식</a>
+      <a href="#careers">채용 <img src="images/main/arrow--up-right.png" alt="" class="careers-icon"></a>
     </nav>
+    <!-- 모바일 메뉴 오버레이 -->
+    <div class="mobile-menu-overlay">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="mobile-menu-logo">
+          <img src="images/main/NCIDS_CI_black.png" alt="NC IDS 로고">
+        </a>
+        <button class="mobile-menu-close" aria-label="메뉴 닫기">
+          <img src="images/main/close-icon.png" alt="닫기" class="close-icon">
+        </button>
+      </div>
+      <nav class="mobile-menu-nav">
+        <div class="mobile-menu-category">
+          <h3 class="mobile-menu-category-title">회사소개</h3>
+          <a href="about.html" class="mobile-menu-link">NC IDS 소개</a>
+          <a href="location.html" class="mobile-menu-link">사업장</a>
+        </div>
+        <div class="mobile-menu-category">
+          <h3 class="mobile-menu-category-title">기술과 서비스</h3>
+          <a href="ax.html" class="mobile-menu-link">AX 솔루션</a>
+          <a href="enterprise.html" class="mobile-menu-link">엔터프라이즈 솔루션</a>
+          <a href="game.html" class="mobile-menu-link">게임 비즈니스 솔루션</a>
+          <a href="infra.html" class="mobile-menu-link">IT 인프라 서비스</a>
+          <a href="bizsupport.html" class="mobile-menu-link">비즈니스 지원 솔루션</a>
+        </div>
+        <div class="mobile-menu-category">
+          <h3 class="mobile-menu-category-title">소식</h3>
+          <a href="#careers" class="mobile-menu-link">
+            채용
+            <img src="images/main/arrow--up-right.png" alt="" class="mobile-careers-icon">
+          </a>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <section class="hero">
@@ -55,7 +93,7 @@
       <h1 class="hero__title"></h1>
       <a class="btn btn--ghost" href="#about">
         자세히 보기
-        <img src="arrow.png" alt="">
+        <img src="images/main/arrow.png" alt="">
       </a>
     </div>
     <div class="hero__dots" aria-label="슬라이드 선택">
@@ -75,7 +113,7 @@
             기업의 지속적인 성장과 경쟁력 확보를 위해 AI, 클라우드, 그리고 통합 IT 플랫폼을 기반으로 하는 End-to-End 디지털 혁신 솔루션을 제공합니다. 전사적 운영<br>효율성을 극대화하는 백오피스 시스템부터, 고객 경험을 재정의하는 AI 기반 서비스, 그리고 혁신 속도를 높이는 차세대 인프라까지 모든 영역에서 미래 지향적인<br>가치를 창출합니다.
           </p>
           <a class="link-inline" href="#about">
-            <img src="link-icon.png" alt="">
+            <img src="images/main/link-icon.png" alt="">
             회사 소개 바로가기
           </a>
         </div>
@@ -96,10 +134,10 @@
           </div>
           <div class="slider-arrows" aria-hidden="true">
             <button class="arrow arrow--prev" aria-label="이전 카드">
-              <img src="arrow__left.png" alt="이전" class="arrow__img">
+              <img src="images/main/arrow__left.png" alt="이전" class="arrow__img">
             </button>
             <button class="arrow arrow--next" aria-label="다음 카드">
-              <img src="arrow__right.png" alt="다음" class="arrow__img">
+              <img src="images/main/arrow__right.png" alt="다음" class="arrow__img">
             </button>
           </div>
         </div>
@@ -108,7 +146,7 @@
         <div class="services-slider">
           <div class="services-grid">
             <article class="service-item">
-              <img src="img01.png" alt="AI 기반 디지털 혁신 서비스" class="service-item__media" draggable="false">
+              <img src="images/main/img01.png" alt="AI 기반 디지털 혁신 서비스" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">AX 솔루션</p>
                 <h3>AI 기반 디지털 혁신 서비스</h3>
@@ -116,7 +154,7 @@
               </div>
             </article>
             <article class="service-item">
-              <img src="img02.png" alt="AI 기반 옴니채널 고객경험(CX) 플랫폼" class="service-item__media" draggable="false">
+              <img src="images/main/img02.png" alt="AI 기반 옴니채널 고객경험(CX) 플랫폼" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">AX 솔루션</p>
                 <h3>AI 기반 옴니채널 고객경험(CX) 플랫폼</h3>
@@ -124,7 +162,7 @@
               </div>
             </article>
             <article class="service-item">
-              <img src="img03.png" alt="게임 및 엔터테인먼트 파트너 솔루션" class="service-item__media" draggable="false">
+              <img src="images/main/img03.png" alt="게임 및 엔터테인먼트 파트너 솔루션" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">게임 비즈니스 솔루션</p>
                 <h3>게임 및 엔터테인먼트 파트너 솔루션</h3>
@@ -132,7 +170,7 @@
               </div>
             </article>
             <article class="service-item">
-              <img src="img04.png" alt="ERP 시스템" class="service-item__media" draggable="false">
+              <img src="images/main/img04.png" alt="ERP 시스템" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">엔터프라이즈 솔루션</p>
                 <h3>ERP 시스템</h3>
@@ -140,7 +178,7 @@
               </div>
             </article>
             <article class="service-item">
-              <img src="img05.png" alt="사내 포털 시스템" class="service-item__media" draggable="false">
+              <img src="images/main/img05.png" alt="사내 포털 시스템" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">엔터프라이즈 솔루션</p>
                 <h3>사내 포털 시스템</h3>
@@ -148,7 +186,7 @@
               </div>
             </article>
             <article class="service-item">
-              <img src="img06.png" alt="게임 전 생애주기 디지털 서비스 플랫폼" class="service-item__media" draggable="false">
+              <img src="images/main/img06.png" alt="게임 전 생애주기 디지털 서비스 플랫폼" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">게임 비즈니스 솔루션</p>
                 <h3>게임 전 생애주기 디지털 서비스 플랫폼</h3>
@@ -156,7 +194,7 @@
               </div>
             </article>
             <article class="service-item">
-              <img src="img07.png" alt="IT 인프라 서비스" class="service-item__media" draggable="false">
+              <img src="images/main/img07.png" alt="IT 인프라 서비스" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">IT 인프라 서비스</p>
                 <h3>IT 인프라 서비스</h3>
@@ -164,7 +202,7 @@
               </div>
             </article>
             <article class="service-item">
-              <img src="img08.png" alt="클라우드 & SaaS 서비스" class="service-item__media" draggable="false">
+              <img src="images/main/img08.png" alt="클라우드 & SaaS 서비스" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">IT 인프라 서비스</p>
                 <h3>클라우드 & SaaS 서비스</h3>
@@ -181,19 +219,19 @@
         <h2 class="section__title">소식</h2>
         <div class="news-grid">
           <article class="card news">
-            <img src="news01.png" alt="AI 솔루션 프로젝트 개발, 인프라 구축 회사 명시 아이디어스 정보" class="card__media">
+            <img src="images/main/news01.png" alt="AI 솔루션 프로젝트 개발, 인프라 구축 회사 명시 아이디어스 정보" class="card__media">
             <div class="card__body">
               <p class="body">AI 솔루션 프로젝트 개발, 인프라 구축 회사 명시 아이디어스 정보</p>
             </div>
           </article>
           <article class="card news">
-            <img src="news02.png" alt="SaaS 기반의 편리하고 스마트한 근태 솔루션을 만나보세요." class="card__media">
+            <img src="images/main/news02.png" alt="SaaS 기반의 편리하고 스마트한 근태 솔루션을 만나보세요." class="card__media">
             <div class="card__body">
               <p class="body">SaaS 기반의 편리하고 스마트한 근태 솔루션을 만나보세요.</p>
             </div>
           </article>
           <article class="card news">
-            <img src="news03.png" alt="AI 챗봇 개발 팀 이야기" class="card__media">
+            <img src="images/main/news03.png" alt="AI 챗봇 개발 팀 이야기" class="card__media">
             <div class="card__body">
               <p class="body">AI 챗봇 개발 팀 이야기</p>
             </div>
@@ -207,17 +245,17 @@
         <h2 class="section__title">CONTACT US</h2>
         <div class="contact-grid">
           <div class="card contact-card">
-            <img src="icon_map.png" alt="위치 아이콘" class="contact-card__icon">
+            <img src="images/main/icon_map.png" alt="위치 아이콘" class="contact-card__icon">
             <p class="label">Korea Office</p>
             <p class="body">경기도 성남시 분당구 판교역로 145 (백현동, 알파리움2단지) 11층<br>TEL 02-2186-3200 / EMAIL ncids@ncsoft.com</p>
           </div>
           <div class="card contact-card">
-            <img src="icon_partnership.png" alt="파트너십 아이콘" class="contact-card__icon">
+            <img src="images/main/icon_partnership.png" alt="파트너십 아이콘" class="contact-card__icon">
             <div class="contact-card__header">
               <p class="label">Project Inquiry</p>
               <span class="pill pill--ghost">
                 문의하기
-                <img src="icon_arrow_right.png" alt="화살표" class="pill__icon">
+                <img src="images/main/icon_arrow_right.png" alt="화살표" class="pill__icon">
               </span>
             </div>
             <p class="body">다양한 비즈니스 분야를 새롭게 개척하고 있습니다.<br>사업의 가능성을 확장하세요!</p>
@@ -232,7 +270,7 @@
           <p class="eyebrow">CAREERS</p>
           <h2 class="section__title">함께 미래를 만들어갈 인재를 찾습니다.</h2>
           <a class="link-inline" href="#careers">
-            <img src="icon_btn.png" alt="화살표" class="link-inline__icon">
+            <img src="images/main/icon_btn.png" alt="화살표" class="link-inline__icon">
             채용 바로가기
           </a>
         </div>
@@ -245,7 +283,7 @@
       <div class="footer-left">
         <div class="footer-top">
           <div class="logo">
-            <img src="logo.png" alt="NC IDS 로고">
+            <img src="images/main/logo.png" alt="NC IDS 로고">
           </div>
           <button class="footer__privacy">개인정보 처리방침</button>
         </div>
@@ -254,7 +292,7 @@
       </div>
   
       <div class="footer-right">
-        FAMILY SITE <img src="icon_add.png" alt="추가" class="footer__add-icon">
+        FAMILY SITE <img src="images/main/icon_add.png" alt="추가" class="footer__add-icon">
       </div>
     </div>
   </footer>
