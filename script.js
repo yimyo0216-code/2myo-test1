@@ -250,6 +250,125 @@ serviceImages.forEach((img) => {
 });
 
 if (servicesGrid && servicesSlider) {
+  const isMobile = () => window.innerWidth <= 959;
+  const servicesMoreBtn = document.querySelector(".services-more-btn");
+  const serviceItems = Array.from(servicesGrid.querySelectorAll(".service-item"));
+  
+  // 모바일 필터링 및 더 보기 기능
+  const filterAndShowItems = (category) => {
+    let visibleItems = [];
+    
+    serviceItems.forEach((item, index) => {
+      const itemCategory = item.getAttribute("data-category");
+      const shouldShow = category === "all" || itemCategory === category;
+      
+      if (shouldShow) {
+        item.classList.remove("hidden");
+        visibleItems.push(item);
+      } else {
+        item.classList.add("hidden");
+      }
+    });
+    
+    // 기본 4개만 보이고 나머지는 숨김
+    visibleItems.forEach((item, index) => {
+      if (index >= 4) {
+        item.classList.add("hidden");
+        item.classList.add("more-item");
+      } else {
+        item.classList.remove("hidden");
+        item.classList.remove("more-item");
+      }
+    });
+    
+    // 더 보기 버튼 표시/숨김
+    if (servicesMoreBtn) {
+      if (visibleItems.length > 4) {
+        servicesMoreBtn.classList.remove("hidden");
+        servicesMoreBtn.style.display = "block";
+      } else {
+        servicesMoreBtn.classList.add("hidden");
+        servicesMoreBtn.style.display = "none";
+      }
+    }
+  };
+  
+  // 더 보기 버튼 클릭
+  if (servicesMoreBtn) {
+    servicesMoreBtn.addEventListener("click", () => {
+      const hiddenItems = servicesGrid.querySelectorAll(".service-item.more-item");
+      hiddenItems.forEach(item => {
+        item.classList.remove("hidden");
+        item.classList.remove("more-item");
+      });
+      servicesMoreBtn.classList.add("hidden");
+      servicesMoreBtn.style.display = "none";
+    });
+  }
+  
+  // 탭 필터 기능 (모바일)
+  const pillButtons = document.querySelectorAll(".pill-row .pill");
+  
+  pillButtons.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const category = pill.getAttribute("data-category") || "all";
+      
+      // 모든 pill에서 is-active 제거
+      pillButtons.forEach((p) => p.classList.remove("is-active"));
+      // 클릭한 pill에 is-active 추가
+      pill.classList.add("is-active");
+      
+      if (isMobile()) {
+        // 모바일: 필터링 및 재나열
+        filterAndShowItems(category);
+      } else {
+        // PC: 기존 스크롤 방식
+        const categoryMap = {
+          "all": 0,
+          "AX 솔루션": 0,
+          "엔터프라이즈 솔루션": 2,
+          "게임 비즈니스 솔루션": 5,
+          "IT 인프라 서비스": 6
+        };
+        const targetIndex = categoryMap[category];
+        if (targetIndex !== undefined) {
+          let currentScroll = 0;
+          const cardWidth = 830;
+          const gap = 102;
+          const cardTotalWidth = cardWidth + gap;
+          currentScroll = targetIndex * cardTotalWidth;
+          servicesGrid.style.transition = "transform 0.4s ease";
+          servicesGrid.style.transform = `translateX(-${currentScroll}px)`;
+        }
+      }
+    });
+  });
+  
+  // 초기 상태 설정 (모바일)
+  if (isMobile()) {
+    filterAndShowItems("all");
+  }
+  
+  // 리사이즈 시 모바일/PC 전환
+  window.addEventListener("resize", () => {
+    if (isMobile()) {
+      const activePill = document.querySelector(".pill.is-active");
+      const category = activePill ? (activePill.getAttribute("data-category") || "all") : "all";
+      filterAndShowItems(category);
+    } else {
+      // PC: 모든 아이템 표시
+      serviceItems.forEach(item => {
+        item.classList.remove("hidden");
+        item.classList.remove("more-item");
+      });
+      if (servicesMoreBtn) {
+        servicesMoreBtn.classList.add("hidden");
+        servicesMoreBtn.style.display = "none";
+      }
+    }
+  });
+
+  // PC 전용 코드
   let currentScroll = 0;
   const cardWidth = 830; // 카드 너비 (flex-basis)
   const gap = 102; // gap 값
@@ -258,14 +377,14 @@ if (servicesGrid && servicesSlider) {
   const maxScroll = (totalCards - 1) * cardTotalWidth;
 
   const updateScrollButtons = () => {
-    if (prevArrow) {
+    if (!isMobile() && prevArrow) {
       if (currentScroll === 0) {
         prevArrow.classList.add("disabled");
       } else {
         prevArrow.classList.remove("disabled");
       }
     }
-    if (nextArrow) {
+    if (!isMobile() && nextArrow) {
       if (currentScroll >= maxScroll) {
         nextArrow.classList.add("disabled");
       } else {
@@ -275,6 +394,7 @@ if (servicesGrid && servicesSlider) {
   };
 
   const scrollServices = (direction) => {
+    if (isMobile()) return;
     if (direction === "prev") {
       currentScroll = Math.max(0, currentScroll - cardTotalWidth);
     } else {
@@ -284,170 +404,140 @@ if (servicesGrid && servicesSlider) {
     updateScrollButtons();
   };
 
-  // 화살표 버튼 이벤트
-  prevArrow?.addEventListener("click", () => {
-    if (currentScroll > 0) scrollServices("prev");
-  });
+  // 화살표 버튼 이벤트 (PC만)
+  if (!isMobile()) {
+    prevArrow?.addEventListener("click", () => {
+      if (currentScroll > 0) scrollServices("prev");
+    });
 
-  nextArrow?.addEventListener("click", () => {
-    if (currentScroll < maxScroll) scrollServices("next");
-  });
+    nextArrow?.addEventListener("click", () => {
+      if (currentScroll < maxScroll) scrollServices("next");
+    });
 
-  // 키보드 방향키 이벤트
-  const handleKeyDown = (event) => {
-    // services 섹션이 뷰포트에 있을 때만 작동
-    const servicesSection = document.getElementById("services");
-    if (!servicesSection) return;
-    
-    const rect = servicesSection.getBoundingClientRect();
-    const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-    
-    if (!isInViewport) return;
-    
-    if (event.key === "ArrowLeft" && currentScroll > 0) {
-      event.preventDefault();
-      scrollServices("prev");
-    } else if (event.key === "ArrowRight" && currentScroll < maxScroll) {
-      event.preventDefault();
-      scrollServices("next");
-    }
-  };
+    // 키보드 방향키 이벤트
+    const handleKeyDown = (event) => {
+      if (isMobile()) return;
+      const servicesSection = document.getElementById("services");
+      if (!servicesSection) return;
+      
+      const rect = servicesSection.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      if (!isInViewport) return;
+      
+      if (event.key === "ArrowLeft" && currentScroll > 0) {
+        event.preventDefault();
+        scrollServices("prev");
+      } else if (event.key === "ArrowRight" && currentScroll < maxScroll) {
+        event.preventDefault();
+        scrollServices("next");
+      }
+    };
 
-  window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    updateScrollButtons();
+  }
 
-  // 초기 화살표 상태 설정
-  updateScrollButtons();
+  // 마우스 드래그 스크롤 기능 (PC만)
+  if (!isMobile()) {
+    let isDragging = false;
+    let startX = 0;
+    let dragStartScroll = 0;
 
-  // 탭 필터 기능
-  const pillButtons = document.querySelectorAll(".pill-row .pill");
-  const categoryMap = {
-    "AX 솔루션": 0,
-    "엔터프라이즈 솔루션": 2,
-    "게임 비즈니스 솔루션": 5,
-    "IT 인프라 서비스": 6
-  };
-
-  const scrollToCategory = (categoryName) => {
-    const targetIndex = categoryMap[categoryName];
-    if (targetIndex !== undefined) {
-      currentScroll = targetIndex * cardTotalWidth;
-      servicesGrid.style.transition = "transform 0.4s ease";
+    const snapToCard = () => {
+      const cardIndex = Math.round(currentScroll / cardTotalWidth);
+      currentScroll = Math.max(0, Math.min(maxScroll, cardIndex * cardTotalWidth));
       servicesGrid.style.transform = `translateX(-${currentScroll}px)`;
       updateScrollButtons();
-    }
-  };
+    };
 
-  pillButtons.forEach((pill) => {
-    pill.addEventListener("click", () => {
-      // 모든 pill에서 is-active 제거
-      pillButtons.forEach((p) => p.classList.remove("is-active"));
-      // 클릭한 pill에 is-active 추가
-      pill.classList.add("is-active");
-      // 해당 카테고리의 첫 번째 아이템으로 스크롤
-      const categoryName = pill.textContent.trim();
-      scrollToCategory(categoryName);
-    });
-  });
+    const onMouseDown = (e) => {
+      isDragging = true;
+      startX = e.pageX - servicesSlider.offsetLeft;
+      dragStartScroll = currentScroll;
+      servicesSlider.style.cursor = "grabbing";
+      servicesGrid.style.transition = "none";
+    };
 
-  // 마우스 드래그 스크롤 기능
-  let isDragging = false;
-  let startX = 0;
-  let dragStartScroll = 0;
+    const onMouseMove = (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - servicesSlider.offsetLeft;
+      const walk = (startX - x) * 1.5;
+      const newScroll = dragStartScroll + walk;
+      
+      if (newScroll < 0) {
+        currentScroll = 0;
+      } else if (newScroll > maxScroll) {
+        currentScroll = maxScroll;
+      } else {
+        currentScroll = newScroll;
+      }
+      
+      servicesGrid.style.transform = `translateX(-${currentScroll}px)`;
+    };
 
-  const snapToCard = () => {
-    const cardIndex = Math.round(currentScroll / cardTotalWidth);
-    currentScroll = Math.max(0, Math.min(maxScroll, cardIndex * cardTotalWidth));
-    servicesGrid.style.transform = `translateX(-${currentScroll}px)`;
-    updateScrollButtons();
-  };
-
-  const onMouseDown = (e) => {
-    isDragging = true;
-    startX = e.pageX - servicesSlider.offsetLeft;
-    dragStartScroll = currentScroll;
-    servicesSlider.style.cursor = "grabbing";
-    servicesGrid.style.transition = "none"; // 드래그 중에는 전환 효과 제거
-  };
-
-  const onMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - servicesSlider.offsetLeft;
-    const walk = (startX - x) * 1.5; // 드래그 속도 조절
-    const newScroll = dragStartScroll + walk;
-    
-    // 경계 체크
-    if (newScroll < 0) {
-      currentScroll = 0;
-    } else if (newScroll > maxScroll) {
-      currentScroll = maxScroll;
-    } else {
-      currentScroll = newScroll;
-    }
-    
-    servicesGrid.style.transform = `translateX(-${currentScroll}px)`;
-  };
-
-  const onMouseUp = () => {
-    if (!isDragging) return;
-    isDragging = false;
-    servicesSlider.style.cursor = "grab";
-    servicesGrid.style.transition = "transform 0.4s ease"; // 전환 효과 복원
-    snapToCard(); // 가장 가까운 카드로 스냅
-  };
-
-  const onMouseLeave = () => {
-    if (isDragging) {
+    const onMouseUp = () => {
+      if (!isDragging) return;
       isDragging = false;
       servicesSlider.style.cursor = "grab";
       servicesGrid.style.transition = "transform 0.4s ease";
       snapToCard();
-    }
-  };
+    };
 
-  // 터치 이벤트 (모바일 지원)
-  let touchStartX = 0;
-  let touchStartScroll = 0;
+    const onMouseLeave = () => {
+      if (isDragging) {
+        isDragging = false;
+        servicesSlider.style.cursor = "grab";
+        servicesGrid.style.transition = "transform 0.4s ease";
+        snapToCard();
+      }
+    };
 
-  const onTouchStart = (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartScroll = currentScroll;
-    servicesGrid.style.transition = "none";
-  };
+    // 터치 이벤트 (PC에서도 지원)
+    let touchStartX = 0;
+    let touchStartScroll = 0;
 
-  const onTouchMove = (e) => {
-    if (!touchStartX) return;
-    const touchX = e.touches[0].clientX;
-    const walk = (touchStartX - touchX) * 1.5;
-    const newScroll = touchStartScroll + walk;
-    
-    if (newScroll < 0) {
-      currentScroll = 0;
-    } else if (newScroll > maxScroll) {
-      currentScroll = maxScroll;
-    } else {
-      currentScroll = newScroll;
-    }
-    
-    servicesGrid.style.transform = `translateX(-${currentScroll}px)`;
-  };
+    const onTouchStart = (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartScroll = currentScroll;
+      servicesGrid.style.transition = "none";
+    };
 
-  const onTouchEnd = () => {
-    if (!touchStartX) return;
-    touchStartX = 0;
-    servicesGrid.style.transition = "transform 0.4s ease";
-    snapToCard();
-  };
+    const onTouchMove = (e) => {
+      if (!touchStartX) return;
+      const touchX = e.touches[0].clientX;
+      const walk = (touchStartX - touchX) * 1.5;
+      const newScroll = touchStartScroll + walk;
+      
+      if (newScroll < 0) {
+        currentScroll = 0;
+      } else if (newScroll > maxScroll) {
+        currentScroll = maxScroll;
+      } else {
+        currentScroll = newScroll;
+      }
+      
+      servicesGrid.style.transform = `translateX(-${currentScroll}px)`;
+    };
 
-  // 이벤트 리스너 등록
-  servicesSlider.style.cursor = "grab";
-  servicesSlider.addEventListener("mousedown", onMouseDown);
-  servicesSlider.addEventListener("mousemove", onMouseMove);
-  servicesSlider.addEventListener("mouseup", onMouseUp);
-  servicesSlider.addEventListener("mouseleave", onMouseLeave);
-  servicesSlider.addEventListener("touchstart", onTouchStart, { passive: true });
-  servicesSlider.addEventListener("touchmove", onTouchMove, { passive: false });
-  servicesSlider.addEventListener("touchend", onTouchEnd);
+    const onTouchEnd = () => {
+      if (!touchStartX) return;
+      touchStartX = 0;
+      servicesGrid.style.transition = "transform 0.4s ease";
+      snapToCard();
+    };
+
+    // 이벤트 리스너 등록 (PC만)
+    servicesSlider.style.cursor = "grab";
+    servicesSlider.addEventListener("mousedown", onMouseDown);
+    servicesSlider.addEventListener("mousemove", onMouseMove);
+    servicesSlider.addEventListener("mouseup", onMouseUp);
+    servicesSlider.addEventListener("mouseleave", onMouseLeave);
+    servicesSlider.addEventListener("touchstart", onTouchStart, { passive: true });
+    servicesSlider.addEventListener("touchmove", onTouchMove, { passive: false });
+    servicesSlider.addEventListener("touchend", onTouchEnd);
+  }
 }
 
 // 모바일 햄버거 메뉴 토글

@@ -127,10 +127,11 @@
         </div>
         <div class="pill-row-wrapper">
           <div class="pill-row">
-            <button class="pill is-active">AX 솔루션</button>
-            <button class="pill">엔터프라이즈 솔루션</button>
-            <button class="pill">게임 비즈니스 솔루션</button>
-            <button class="pill">IT 인프라 서비스</button>
+            <button class="pill is-active" data-category="all">전체</button>
+            <button class="pill" data-category="AX 솔루션">AX 솔루션</button>
+            <button class="pill" data-category="엔터프라이즈 솔루션">엔터프라이즈 솔루션</button>
+            <button class="pill" data-category="게임 비즈니스 솔루션">게임 비즈니스 솔루션</button>
+            <button class="pill" data-category="IT 인프라 서비스">IT 인프라 서비스</button>
           </div>
           <div class="slider-arrows" aria-hidden="true">
             <button class="arrow arrow--prev" aria-label="이전 카드">
@@ -145,7 +146,7 @@
       <div class="services-slider-wrapper">
         <div class="services-slider">
           <div class="services-grid">
-            <article class="service-item">
+            <article class="service-item" data-category="AX 솔루션">
               <img src="images/main/img01.png" alt="AI 기반 디지털 혁신 서비스" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">AX 솔루션</p>
@@ -153,7 +154,7 @@
                 <p class="body">축적된 경험과 플랫폼 역량을 기반으로 다양한 산업 환경에 적용 가능한 AI 응용 서비스를 설계하고 구축합니다.</p>
               </div>
             </article>
-            <article class="service-item">
+            <article class="service-item" data-category="AX 솔루션">
               <img src="images/main/img02.png" alt="AI 기반 옴니채널 고객경험(CX) 플랫폼" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">AX 솔루션</p>
@@ -161,7 +162,7 @@
                 <p class="body">티켓·콜·상담 이력 관리, 권한 제어, 지식베이스, 옴니채널 메시징, 업무 자동화 등 고객지원 핵심 기능을 표준화된 프로세스로 제공합니다.</p>
               </div>
             </article>
-            <article class="service-item">
+            <article class="service-item" data-category="게임 비즈니스 솔루션">
               <img src="images/main/img03.png" alt="게임 및 엔터테인먼트 파트너 솔루션" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">게임 비즈니스 솔루션</p>
@@ -169,7 +170,7 @@
                 <p class="body">게임·엔터테인먼트 산업의 서비스 파트너를 위한 매출·정산·운영 관리 플랫폼을 설계하고 구축합니다.</p>
               </div>
             </article>
-            <article class="service-item">
+            <article class="service-item" data-category="엔터프라이즈 솔루션">
               <img src="images/main/img04.png" alt="ERP 시스템" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">엔터프라이즈 솔루션</p>
@@ -177,7 +178,7 @@
                 <p class="body">재무·인사·구매·급여·거버넌스 전 영역을 아우르는 전사 통합 플랫폼으로, 기업 경영의 모든 핵심 프로세스를 하나로 연결합니다.</p>
               </div>
             </article>
-            <article class="service-item">
+            <article class="service-item" data-category="엔터프라이즈 솔루션">
               <img src="images/main/img05.png" alt="사내 포털 시스템" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">엔터프라이즈 솔루션</p>
@@ -185,7 +186,7 @@
                 <p class="body">임직원의 커뮤니케이션과 협업을 위한 핵심 플랫폼으로, 소통·관리·지원 기능을 통합해 업무 효율을 높입니다.</p>
               </div>
             </article>
-            <article class="service-item">
+            <article class="service-item" data-category="게임 비즈니스 솔루션">
               <img src="images/main/img06.png" alt="게임 전 생애주기 디지털 서비스 플랫폼" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">게임 비즈니스 솔루션</p>
@@ -193,7 +194,7 @@
                 <p class="body">국내 1위 게임 서비스 운영 역량과 글로벌 게임 서비스 경험을 바탕으로, 브랜드·프로모션·커머스 등 목적에 최적화된 웹·모바일 플랫폼을 설계하고 구축합니다.</p>
               </div>
             </article>
-            <article class="service-item">
+            <article class="service-item" data-category="IT 인프라 서비스">
               <img src="images/main/img07.png" alt="IT 인프라 서비스" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">IT 인프라 서비스</p>
@@ -201,7 +202,7 @@
                 <p class="body">자체 플랫폼 기반의 차세대 인프라를 통해 기업이 변화하는 시장 속에서도 민첩하고 안정적으로 혁신을 이어갑니다.</p>
               </div>
             </article>
-            <article class="service-item">
+            <article class="service-item" data-category="IT 인프라 서비스">
               <img src="images/main/img08.png" alt="클라우드 & SaaS 서비스" class="service-item__media" draggable="false">
               <div class="service-item__content">
                 <p class="eyebrow">IT 인프라 서비스</p>
@@ -210,6 +211,7 @@
               </div>
             </article>
           </div>
+          <button class="services-more-btn" style="display: none;">더 보기</button>
         </div>
       </div>
     </section>
