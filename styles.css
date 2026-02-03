@@ -622,6 +622,34 @@ body.submenu-open .top-link-item a {
   display: block;
 }
 
+.about .link-inline {
+  position: relative;
+}
+
+.about .link-inline::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background-image: url('images/main/link-icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.about .link-inline:hover::before {
+  background-image: url('images/main/link-icon-hover.png');
+}
+
+.about .link-inline img {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .link-inline__icon {
   width: auto;
   height: auto;
@@ -1895,7 +1923,7 @@ body.submenu-open .top-link-item a {
     gap: 10px;
   }
 
-  .about .link-inline img {
+  .about .link-inline::before {
     width: 20px;
     height: 20px;
   }
