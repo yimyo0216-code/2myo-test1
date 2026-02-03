@@ -177,8 +177,8 @@ if (topLinkGroup && submenuPanel) {
 }
 
 // "소식"과 "채용" 메뉴에도 회사소개/기술과 서비스와 동일한 패널이 열리도록
-const newsLink = document.querySelector('.top-links a[href="#news"]');
-const careersLink = document.querySelector('.top-links a[href="#careers"]');
+const newsLink = document.querySelector('.top-links a[href="news.html"]');
+const careersLink = document.querySelector('.top-links a.link--careers');
 
 if (submenuPanel && (newsLink || careersLink)) {
   // 모든 메뉴 항목에서 같은 패널을 열기 위한 함수

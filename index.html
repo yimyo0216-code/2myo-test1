@@ -9,8 +9,10 @@
 <body>
   <header class="top">
     <div class="logo">
-      <img src="images/main/logo.png" alt="NC IDS 로고" class="logo-img logo-light">
-      <img src="images/main/NCIDS_CI_black.png" alt="NC IDS 로고" class="logo-img logo-dark">
+      <a href="index.html">
+        <img src="images/main/logo.png" alt="NC IDS 로고" class="logo-img logo-light">
+        <img src="images/main/NCIDS_CI_black.png" alt="NC IDS 로고" class="logo-img logo-dark">
+      </a>
     </div>
     <button class="mobile-menu-toggle" aria-label="메뉴 열기">
       <img src="images/main/hamburger-icon-wh.png" alt="메뉴" class="hamburger-icon hamburger-icon-white">
@@ -39,7 +41,7 @@
         </div>
       </div>
       <a href="news.html">소식</a>
-      <a href="#careers">채용 <img src="images/main/arrow--up-right.png" alt="" class="careers-icon"></a>
+      <a href="https://careers.ncsoft.com/apply/list?companyIds=NCIDS" target="_blank" rel="noopener noreferrer" class="link--careers">채용 <img src="images/main/arrow--up-right.png" alt="" class="careers-icon"></a>
     </nav>
     <!-- 모바일 메뉴 오버레이 -->
     <div class="mobile-menu-overlay">
@@ -67,7 +69,7 @@
         </div>
         <div class="mobile-menu-category">
           <h3 class="mobile-menu-category-title">소식</h3>
-          <a href="#careers" class="mobile-menu-link">
+          <a href="https://careers.ncsoft.com/apply/list?companyIds=NCIDS" target="_blank" rel="noopener noreferrer" class="mobile-menu-link mobile-menu-link--careers">
             채용
             <img src="images/main/arrow--up-right.png" alt="" class="mobile-careers-icon">
           </a>
@@ -211,7 +213,10 @@
               </div>
             </article>
           </div>
-          <button class="services-more-btn" style="display: none;">더 보기</button>
+          <button class="services-more-btn" style="display: none;">
+            <span class="services-more-btn__text">더보기</span>
+            <img src="images/main/arrow-down.png" alt="" class="services-more-btn__icon">
+          </button>
         </div>
       </div>
     </section>
@@ -220,19 +225,19 @@
       <div class="container">
         <h2 class="section__title">소식</h2>
         <div class="news-grid">
-          <article class="card news">
-            <img src="images/main/news01.png" alt="AI 솔루션 프로젝트 개발, 인프라 구축 회사 명시 아이디어스 정보" class="card__media">
+          <article class="card news news--first">
+            <img src="images/main/news01.png" alt="시스템 소프트웨어 개발, 인프라 구축 회사 엔씨 아이디에스 출범" class="card__media">
             <div class="card__body">
-              <p class="body">AI 솔루션 프로젝트 개발, 인프라 구축 회사 명시 아이디어스 정보</p>
+              <p class="body">시스템 소프트웨어 개발, 인프라 구축 회사<br>엔씨 아이디에스 출범</p>
             </div>
           </article>
-          <article class="card news">
+          <article class="card news news--item">
             <img src="images/main/news02.png" alt="SaaS 기반의 편리하고 스마트한 근태 솔루션을 만나보세요." class="card__media">
             <div class="card__body">
               <p class="body">SaaS 기반의 편리하고 스마트한 근태 솔루션을 만나보세요.</p>
             </div>
           </article>
-          <article class="card news">
+          <article class="card news news--item">
             <img src="images/main/news03.png" alt="AI 챗봇 개발 팀 이야기" class="card__media">
             <div class="card__body">
               <p class="body">AI 챗봇 개발 팀 이야기</p>
