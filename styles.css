@@ -3159,6 +3159,7 @@ body.submenu-open .top-link-item a {
 
 .mobile-menu-link:hover {
   color: #3E6CDF;
+  font-weight: 700;
 }
 
 .mobile-menu-link--active {
@@ -3188,12 +3189,12 @@ body.submenu-open .top-link-item a {
   /* 모바일 메뉴 화면 스타일 - 959px 이하 */
   .mobile-menu-header {
     border-bottom: none;
-    padding: 14px 16px 0 16px;
+    padding: 20px 16px 0 16px;
     margin-bottom: 50px;
   }
   .mobile-menu-logo {
     position: static;
-    margin-top: 0;
+    margin-top: 3.5px;
   }
   .mobile-menu-close {
     margin-left: auto;
@@ -3210,6 +3211,10 @@ body.submenu-open .top-link-item a {
   }
   .mobile-menu-category-title {
     margin-bottom: 20px;
+  }
+
+  .mobile-menu-category:has(.mobile-menu-link--careers) .mobile-menu-category-title {
+    margin-bottom: 50px;
   }
   .mobile-menu-link {
     border-bottom: none;
